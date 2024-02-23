@@ -1,3 +1,7 @@
+# l.sort
+# ~~.join(list) # str 반환
+# 세밀하게 생각하자!
+
 while True:
     n = int(input())
     if n==-1:
