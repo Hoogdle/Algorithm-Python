@@ -6,15 +6,13 @@
 
 # not in 사용 가능!
 
-# 
-
 
 num = int(input())
-temp = num
 counter =[]
 i=1
 
-for k in range(temp):
+while True:
+
     if num-i >= 0 and (num-i) not in counter:
         counter.append(i)
         num = num-i
