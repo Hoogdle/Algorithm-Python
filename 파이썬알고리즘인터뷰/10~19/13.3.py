@@ -8,6 +8,11 @@
 # not None => True
 # None => False
 
+# python 'multiple-declaration'
+# a, b, c = d, e, f
+# a,b,c, is changed sequentially [dynamic]
+# d,e,f is fixed when declaration [static]
+
 from LinkedList import ListNode
 
 def is_palindrome(head: ListNode) -> bool:
