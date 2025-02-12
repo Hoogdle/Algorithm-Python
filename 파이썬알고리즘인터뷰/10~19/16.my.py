@@ -2,27 +2,40 @@
 
 from LinkedList import ListNode
 
-def two_sum(head1: ListNode, head2: ListNode) -> int:
-    mul_num = 1
-    result = 0
+def two_sum(head1: ListNode, head2: ListNode) -> ListNode:
+    result_node = ListNode(val=0)
+    return_node = result_node
 
     while head1 or head2:
         if head1 and head2:
-            result += (head1.val + head2.val) *  mul_num
-            mul_num *= 10
+            tmp = result_node.val + head1.val + head2.val
+            if tmp >= 10:
+                result_node.val = tmp%10
+                result_node.next = ListNode(val=1)
+            else:
+                result_node.val = tmp
+                result_node.next = ListNode(val=0)
+
             head1, head2 = head1.next, head2.next
+            result_node = result_node.next
 
         elif head1:
-            result += (head1.val) * mul_num
-            mul_num *= 10
+            result_node.val = head1.val
             head1 = head1.next
+            if head1:
+                result_node.next = ListNode(val=0)
+                result_node = result_node.next
 
         elif head2:
-            result += (head2.val) * mul_num
-            mul_num *= 10
+            result_node.val = head2.val
             head2 = head2.next
+            if head2:
+                result_node.next = ListNode(val=0)
+                result_node = result_node.next
 
-    return result
+        result_node.next = None
+
+    return return_node
 
 
 a1 = ListNode(val=2)
@@ -37,4 +50,8 @@ b4 = ListNode(val=7)
 a1.next, a2.next, a3.next = a2, a3, None
 b1.next, b2.next, b3.next, b4.next = b2, b3, b4, None
 
-print(two_sum(a1,b1))
+result = two_sum(a1,b1)
+
+while result:
+    print(result.val)
+    result = result.next
